@@ -78,11 +78,11 @@ python scripts/preprocessing.py \
 ## Visualizing Results
 ### Check the samples/ directory for:
 
-Output videos (results/videos/)
+   - Output videos (results/videos/)
 
-Before Warping (results/images/)
+   - Before Warping (results/images/)
 
-After Warping (results/warping/)
+   - After Warping (results/warping/)
 
 ## Technical Pipeline
 1. Body Reconstruction: SMPL-X mesh from 2D keypoints
