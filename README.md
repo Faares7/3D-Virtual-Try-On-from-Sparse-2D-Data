@@ -96,7 +96,8 @@ python scripts/preprocessing.py \
    - Dressed avatar generation
 
 ## Repository Structure:
-
+ images (results/images/)
+```bash
 3D-Virtual-Try-On/
 ├── model/                    # Main model implementation
 │   ├── body_reconstruction/  # SMPL-X estimation
@@ -113,6 +114,7 @@ python scripts/preprocessing.py \
 ├── requirements.txt          # Dependencies
 ├── report.pdf                # Technical documentation
 └── presentation.pdf          # Project summary
+```
 
 ## Full Report:
 - Detailed methodology including garment warping
