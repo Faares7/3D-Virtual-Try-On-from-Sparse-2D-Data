@@ -1,17 +1,20 @@
 # 3D Virtual Try-On from Preprocessed 2D Data  
-*Optimized pipeline for garment fitting with ready-to-use datasets*
+*Optimized pipeline for garment fitting with ready-to-use or raw datasets*
 
 ## Project Overview  
 This repository provides:  
-1. **Main Model**: 3D virtual try-on pipeline working directly with preprocessed garment data (extracted garments + masks)  
-2. **Optional Script**: Preprocessing utility for raw datasets (if needed)  
+1. **Main Model**: Complete 3D virtual try-on pipeline including:
+   - Body reconstruction from 2D keypoints
+   - Garment warping on SMPL-X meshes
+   - Physics-based clothing simulation
+2. **Optional Script**: Preprocessing utility for raw datasets  
 
-Inspired by: [SMPLify-X Perfect Implementation](https://github.com/KyujinHan/Smplify-X-Perfect-Implementation.git)  
 
 ### Key Features  
-✅ **Works with preprocessed data** - Skips expensive OpenPose stage  
-✅ **Flexible input** - Compatible with both ready-to-use and raw datasets  
-✅ **Optimized pipeline** - Focused on garment-body alignment  
+✅ **End-to-End Pipeline**: From 2D data to dressed 3D avatars  
+✅ **Advanced Garment Warping**: Precise clothing deformation on body meshes  
+✅ **Visual Samples**: Includes output videos and images (see `samples/`)  
+✅ **Flexible Input**: Works with both preprocessed and raw datasets  
 
 ---
 
@@ -31,7 +34,7 @@ We use the **M3D-VTON dataset** ([GitHub](https://github.com/fyviezhao/M3D-VTON)
 ## Installation  
 
 ### 1. Clone Repository  
-```bash  
+```bash 
 git clone https://github.com/your-username/3D-Virtual-Try-On.git  
 cd 3D-Virtual-Try-On
 ```
@@ -39,48 +42,88 @@ cd 3D-Virtual-Try-On
 #### Core Requirements:
 ```bash
 pip install -r requirements.txt
-``` 
-#### Essential Dependencies:
 ```
-bash
+#### Essential Dependencies:
+```bash
 # SMPL-X and Body Model  
 pip install smplx human-body-prior  
 
-# Mesh Processing  
-pip install trimesh vedo pyrender  
+# Mesh Processing & Garment Warping  
+pip install trimesh vedo pyrender warp-lang  
 
 # Numerical Operations  
 pip install numpy scipy chumpy  
 
-# Optional for Preprocessing  
+# Visualization  
 pip install opencv-python matplotlib
-```  
-#### For GPU support (recommended):
 ```
-bash
+#### For GPU support (recommended):
+```bash
 pip install torch torchvision --extra-index-url https://download.pytorch.org/whl/cu113
-```  
-Usage
-For Preprocessed Data (Recommended)
-bash
+```
+## Usage
+### For Preprocessed Data (Recommended)
+```bash
 python run_model.py \
     --input_dir ./preprocessed_data/ \
-    --output_dir ./results/
-For Raw Datasets
-bash
+    --output_dir ./results/ \
+    --warp_garments True
+```
+### For Raw Datasets
+```bash
 python scripts/preprocessing.py \
     --raw_data ./input_images/ \
     --output ./preprocessed_output/
-Repository Structure
+```
+## Visualizing Results
+### Check the samples/ directory for:
+
+Output videos (results/videos/)
+
+Before Warping (results/images/)
+
+After Warping (results/warping/)
+
+## Technical Pipeline
+1. Body Reconstruction: SMPL-X mesh from 2D keypoints
+
+2. Garment Warping:
+    - UV mapping of clothing textures
+
+    - Physics-based deformation on body mesh
+
+3. Final Rendering:
+   - Dressed avatar generation
+
+## Repository Structure:
 3D-Virtual-Try-On/
 ├── model/                    # Main model implementation
+│   ├── body_reconstruction/  # SMPL-X estimation
+│   ├── garment_warping/      # Clothing deformation
+│   └── rendering/           # Final output generation
 ├── scripts/
-│   ├── preprocessing.py      # Dataset preparation utility
-│   └── utils.py              # Helper functions
-├── requirements.txt          # Core dependencies
+│   ├── preprocessing.py      # Data preparation
+│   └── utils.py             # Helper functions
+├── samples/                  # Output examples
+│   ├── videos/               # Demo videos
+│   └── images/               # Rendered results
+├── notebooks/                # Jupyter notebooks
+│   └── warping_demo.ipynb    # Warping implementation
+├── requirements.txt          # Dependencies
 ├── report.pdf                # Technical documentation
 └── presentation.pdf          # Project summary
-Documentation
-Full Report
 
-Presentation Slides
+## Full Report:
+- Detailed methodology including garment warping
+
+## Presentation: 
+- Visual walkthrough of the pipeline
+
+## Acknowledgements
+### This project builds upon:
+
+    - SMPLify-X Perfect Implementation
+
+    - M3D-VTON Dataset
+
+    - Garment warping techniques from recent literature
