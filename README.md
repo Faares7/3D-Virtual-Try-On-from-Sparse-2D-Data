@@ -96,6 +96,7 @@ python scripts/preprocessing.py \
    - Dressed avatar generation
 
 ## Repository Structure:
+
 3D-Virtual-Try-On/
 ├── model/                    # Main model implementation
 │   ├── body_reconstruction/  # SMPL-X estimation
@@ -121,9 +122,8 @@ python scripts/preprocessing.py \
 
 ## Acknowledgements
 ### This project builds upon:
+   - SMPLify-X Perfect Implementation
 
-    - SMPLify-X Perfect Implementation
+   - M3D-VTON Dataset
 
-    - M3D-VTON Dataset
-
-    - Garment warping techniques from recent literature
+   - Garment warping techniques from recent literature
