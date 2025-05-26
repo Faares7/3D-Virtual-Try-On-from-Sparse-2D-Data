@@ -5,7 +5,7 @@
 This repository provides:  
 1. **Main Model**: Complete 3D virtual try-on pipeline including:
    - Body reconstruction from 2D keypoints
-   - Garment warping on SMPL-X meshes
+   - Garment warping with UV Mapping on SMPL-X meshes
    - Physics-based clothing simulation
 2. **Optional Script**: Preprocessing utility for raw datasets  
 
@@ -78,11 +78,11 @@ python scripts/preprocessing.py \
 ## Visualizing Results
 ### Check the samples/ directory for:
 
-   - Output videos (results/videos/)
+   - Output videos (samples/videos/)
 
-   - Before Warping (results/images/)
+   - Before Warping (samples/images/)
 
-   - After Warping (results/warping/)
+   - After Warping (samples/images/)
 
 ## Technical Pipeline
 1. Body Reconstruction: SMPL-X mesh from 2D keypoints
@@ -99,21 +99,16 @@ python scripts/preprocessing.py \
  images (results/images/)
 ```bash
 3D-Virtual-Try-On/
-├── model/                    # Main model implementation
-│   ├── body_reconstruction/  # SMPL-X estimation
-│   ├── garment_warping/      # Clothing deformation
-│   └── rendering/           # Final output generation
-├── scripts/
-│   ├── preprocessing.py      # Data preparation
-│   └── utils.py             # Helper functions
-├── samples/                  # Output examples
+├── model/                          
+│   ├── SMPLifyx Pipeline.ipynp  # SMPL-X estimation
+├── scripts/                                    
+│   ├── data_preprocessing.py  # Data preparation
+├── samples/                  
 │   ├── videos/               # Demo videos
 │   └── images/               # Rendered results
-├── notebooks/                # Jupyter notebooks
-│   └── warping_demo.ipynb    # Warping implementation
 ├── requirements.txt          # Dependencies
-├── report.pdf                # Technical documentation
-└── presentation.pdf          # Project summary
+├── report.doc                # Technical documentation
+└── ppt.pdf                   # Project summary
 ```
 
 ## Full Report:
@@ -128,4 +123,4 @@ python scripts/preprocessing.py \
 
    - M3D-VTON Dataset
 
-   - Garment warping techniques from recent literature
+   - Garment warping techniques using UV Mapping
